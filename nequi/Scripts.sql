@@ -1,0 +1,25 @@
+--Crear tabla franquicia
+CREATE TABLE nequi_db.franquicia(
+  ID int NOT NULL
+, NOMBRE VARCHAR(25) NOT NULL
+, CONSTRAINT PRIMARY KEY ( ID )
+);
+
+--Crear tabla sucursal
+CREATE TABLE nequi_db.sucursal(
+  ID int NOT NULL
+, NOMBRE VARCHAR(25) NOT NULL
+, IDFRANQUICIA int NOT NULL
+, CONSTRAINT PRIMARY KEY ( ID )
+, FOREIGN KEY (IDFRANQUICIA) REFERENCES franquicia(ID)
+);
+
+--Crear tabla producto
+CREATE TABLE nequi_db.producto(
+  ID int NOT NULL
+, NOMBRE VARCHAR(25) NOT NULL
+, STOCK VARCHAR(25) NOT NULL
+, IDSUCURSAL int NOT NULL
+, CONSTRAINT PRIMARY KEY ( ID )
+,FOREIGN KEY (IDSUCURSAL) REFERENCES sucursal(ID)
+);
